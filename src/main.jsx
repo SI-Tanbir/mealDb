@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { Children, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -12,11 +12,15 @@ import RandomMeal from './Random/RandomMeal.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>
+    element: <App></App>,
+    
   },
-  {path:"/random",
-    element:<RandomMeal></RandomMeal>
-  }
+  { 
+    path:"/random",
+    loader:()=>fetch('https://www.themealdb.com/api/json/v1/1/categories.php'),
+    element:<RandomMeal></RandomMeal>,
+
+  },
 ]);
 
 
