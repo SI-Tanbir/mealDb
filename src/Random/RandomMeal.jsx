@@ -1,11 +1,11 @@
-import { useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 
 function RandomMeal() {
 
 const data =useLoaderData();
 
 let newdata=data.categories;
-
+console.log(data)
 // idCategory
 // : 
 // "1"
@@ -19,7 +19,7 @@ let newdata=data.categories;
 // : 
 // "https://www.themealdb.com/images/category/beef.png"
 
-// console.log(newdata)
+console.log(newdata)
     return (
     <div>
         {
@@ -29,7 +29,7 @@ let newdata=data.categories;
                     <img src={res.strCategoryThumb} alt={res.strCategory} />
                     <h3 className="text-xl">{res.strCategory}</h3>
                     <p className="text-xl"> {res.strCategoryDescription}</p>
-                    <button>Click to know more</button>
+                    <Link to={`/meal/${res.strCategory}`}>Click to Know more...</Link>
                 </div>
             ))
         }

@@ -5,8 +5,10 @@ import App from './App.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
+  useParams,
 } from "react-router-dom";
 import RandomMeal from './Random/RandomMeal.jsx';
+import MealsDetails from './Random/MealsDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -21,6 +23,11 @@ const router = createBrowserRouter([
     element:<RandomMeal></RandomMeal>,
 
   },
+  {
+    path:"/meal/:postId",
+    loader:({params}) => fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${params}`),
+    element:<MealsDetails></MealsDetails>
+  }
 ]);
 
 
